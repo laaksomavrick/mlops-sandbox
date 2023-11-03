@@ -31,6 +31,10 @@ red_wine = pd.read_csv("/dbfs/databricks-datasets/wine-quality/winequality-red.c
 
 # COMMAND ----------
 
+print(white_wine)
+
+# COMMAND ----------
+
 # MAGIC %md Merge the two DataFrames into a single dataset, with a new binary feature "is_red" that indicates whether the wine is red or white.
 
 # COMMAND ----------
@@ -42,6 +46,10 @@ data = pd.concat([red_wine, white_wine], axis=0)
 
 # Remove spaces from column names
 data.rename(columns=lambda x: x.replace(' ', '_'), inplace=True)
+
+# COMMAND ----------
+
+print(data)
 
 # COMMAND ----------
 
@@ -72,6 +80,10 @@ sns.distplot(data.quality, kde=False)
 
 high_quality = (data.quality >= 7).astype(int)
 data.quality = high_quality
+
+# COMMAND ----------
+
+print(data)
 
 # COMMAND ----------
 
